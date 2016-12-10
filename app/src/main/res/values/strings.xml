@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FetalMove</string>
+
+    <string name="fetal_count">数胎动</string>
+    <string name="runchart">趋势图</string>
+    <string name="hirstory">历史记录</string>
+</resources>
