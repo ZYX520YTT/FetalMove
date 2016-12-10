@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     if(isok){
                         fetal_count++;
-                        tv_count.setText(fetal_count + "");
+                        tv_count.setText(fetal_count + "次");
                         isok=false;
                         new Thread(){
                             @Override
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void ChangeAndTime() {
         //1.改变背景
         iv_count.setImageResource(R.drawable.aftercount);
-        tv_count.setText("0");
+        tv_count.setText("0次");
         //2.计时
         handler.sendEmptyMessage(0);
     }
