@@ -7,14 +7,32 @@ package fetalmove.neusoft.com.fetalmove.activity;
  */
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageButton;
+
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 import fetalmove.neusoft.com.fetalmove.R;
 
 public class CharActivity extends AppCompatActivity {
 
+    @ViewInject(R.id.ib_back)
+    private ImageButton ib_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_char);
+
+        Init();
+    }
+    private void Init(){
+        ib_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
     }
 }

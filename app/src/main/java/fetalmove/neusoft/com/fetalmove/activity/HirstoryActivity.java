@@ -17,7 +17,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.List;
 
-import fetalmove.neusoft.com.fetalmove.HistoryAdapter;
+import fetalmove.neusoft.com.fetalmove.adapter.HistoryAdapter;
 import fetalmove.neusoft.com.fetalmove.R;
 import fetalmove.neusoft.com.fetalmove.bean.CountInfo;
 import fetalmove.neusoft.com.fetalmove.db.dao.CountDao;
