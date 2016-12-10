@@ -5,7 +5,6 @@ package fetalmove.neusoft.com.fetalmove;
  * 功能：
  */
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +21,7 @@ import android.widget.Toast;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import fetalmove.neusoft.com.fetalmove.activity.CharActivity;
@@ -105,20 +105,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.handleMessage(msg);
 
             time_count--;
-            if (time_count == 0) {
+            if (time_count == 0) {//计时完成
                 tv_count.setText("");
-                tv_time.setText("60");
+                tv_time.setText("60s");
                 handler.removeMessages(0);
-                fetal_count = 0;
                 isFirst = false;
                 time_count = 60;
                 iv_count.setImageResource(R.drawable.begincount);
 
                 //插入记录到数据库
                 InsertData();
+                fetal_count = 0;
             } else {
                 handler.sendEmptyMessageDelayed(0, 1000);
-                tv_time.setText(time_count + "");
+                tv_time.setText(time_count + "s");
             }
 
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        dao.add();
         Date Date=new Date();
         SimpleDateFormat format1=new SimpleDateFormat("yyyy/MM/dd");
-        SimpleDateFormat format2=new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat format2=new SimpleDateFormat("HH:mm");
         String date=format1.format(Date);
         String time=format2.format(Date);
         dao.add(date,time,fetal_count);

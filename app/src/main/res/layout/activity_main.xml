@@ -47,7 +47,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/timer"
         android:gravity="center"
-        android:text="60"
+        android:text="60s"
         android:textSize="20sp" />
 
     <ImageButton
