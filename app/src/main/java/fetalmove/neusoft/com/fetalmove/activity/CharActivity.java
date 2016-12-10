@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -32,6 +33,8 @@ public class CharActivity extends AppCompatActivity {
     private ImageButton ib_back;
     @ViewInject(R.id.chart)
     private LineChart chart;
+    @ViewInject(R.id.tv_empty)
+    private TextView tv_empty;
 
     private LineData datay;
     private ArrayList<String> xVals;
@@ -54,7 +57,6 @@ public class CharActivity extends AppCompatActivity {
         CountDao countDao = new CountDao(this);
         List<CountInfo> countInfos = countDao.finall();
 
-
         ib_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,24 +64,37 @@ public class CharActivity extends AppCompatActivity {
             }
         });
 
-        xVals = new ArrayList<>();
-        yVals = new ArrayList<>();
+        if(countInfos.size()!=0&&countInfos!=null){
+            tv_empty.setVisibility(View.GONE);
+            chart.setVisibility(View.VISIBLE);
 
-        for (int i = 0; i < countInfos.size(); i++) {
+            xVals = new ArrayList<>();
+            yVals = new ArrayList<>();
 
-            yVals.add(new Entry(countInfos.get(i).getCount(), i));
-            xVals.add(countInfos.get(i).getDate());
+            for (int i = 0; i < countInfos.size(); i++) {
+
+                yVals.add(new Entry(countInfos.get(i).getCount(), i));
+                xVals.add(countInfos.get(i).getDate());
+            }
+            dataSet = new LineDataSet(yVals, "胎动趋势表");
+            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+
+            datay = new LineData(xVals, dataSet);
+
+            chart.setData(datay);
+
+            chart.getFillFormatter();
+            chart.setDescription("胎动趋势表");
+            chart.animateY(3000);
+
+
+        }else{
+            tv_empty.setVisibility(View.VISIBLE);
+            chart.setVisibility(View.GONE);
         }
-        dataSet = new LineDataSet(yVals, "胎动趋势表");
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
 
-        datay = new LineData(xVals, dataSet);
 
-        chart.setData(datay);
-
-        chart.getFillFormatter();
-        chart.setDescription("胎动趋势表");
-        chart.animateY(3000);
     }
 }

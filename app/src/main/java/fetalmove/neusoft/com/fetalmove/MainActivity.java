@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ib_hirstory.setOnClickListener(this);
         ib_char.setOnClickListener(this);
 
+
+
     }
 
     private int fetal_count = 0;

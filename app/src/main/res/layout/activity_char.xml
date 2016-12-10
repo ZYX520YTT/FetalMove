@@ -36,10 +36,23 @@
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rl_title"
+        android:layout_below="@id/rl_title"
 
         >
     </com.github.mikephil.charting.charts.LineChart>
+
+
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无数据"
+        android:layout_centerInParent="true"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        />
 
 
 
