@@ -4,6 +4,7 @@ package fetalmove.neusoft.com.fetalmove;
  * Email：1124751755@qq.com
  * 功能：
  */
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bigkoo.alertview.AlertView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -118,6 +120,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //插入记录到数据库
                 InsertData();
                 fetal_count = 0;
+
+                AlertView alertView=new AlertView("数胎动", "完成一次胎动检测", null, new String[]{"确定"}, null, MainActivity.this,
+                        AlertView.Style.Alert, null);
+                alertView.show();
+
             } else {
                 handler.sendEmptyMessageDelayed(0, 1000);
                 tv_time.setText(time_count + "s");

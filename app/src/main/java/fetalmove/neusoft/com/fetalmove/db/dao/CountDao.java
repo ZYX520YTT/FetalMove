@@ -38,7 +38,7 @@ public class CountDao {
         return true;
     }
 
-
+    //查询所有
     public List<CountInfo> finall(){
         SQLiteDatabase db=helper.getReadableDatabase();
         Cursor cursor=db.query("info",new String[]{"date","time","count"},null,null,null,null,null);
